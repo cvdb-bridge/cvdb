@@ -26,15 +26,19 @@ return array(
 									'bootstrap.gii',
 					),
 			'class'=>'system.gii.GiiModule',
-			'password'=>'Enter Your Password Here',
+			'password'=>'12345',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
+			'ipFilters'=>array('27.251.157.74'),
 		),
 		
 	),
 
 	// application components
 	'components'=>array(
+		'authManager'=>array(
+						'class'=>'CDbAuthManager',
+						'defaultRoles'=>array('authenticated', 'guest'),
+						),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -59,13 +63,17 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=bridge_cvdb',
+			'class'=>'CDbConnection',
+			'connectionString' => 'mysql:host=50.31.138.79;dbname=bridge_cvdb',
 			'emulatePrepare' => true,
 			'username' => 'bridge_cvdb',
-			'password' => '20121206dB',
+			'password' => '20121227dB',
 			'charset' => 'utf8',
 		),
-		
+		'authManager'=>array(
+						'class'=>'CDbAuthManager',
+						'connectionID'=>'db',
+						),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

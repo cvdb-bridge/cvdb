@@ -51,6 +51,7 @@ class SiteController extends Controller
 	 */
 	public function actionContact()
 	{
+		$this->allowUser(ADMIN); // access restriction
 		$model=new ContactForm;
 		if(isset($_POST['ContactForm']))
 		{
